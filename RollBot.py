@@ -1,6 +1,5 @@
 #The ID's have been edited out of the source. 
-#You must fill in your own ID's from your client, users, and channels for the bot to funciton. 
-
+#You must fill in your own ID's from your client, users, and channels for the bot to function. 
 from discord.ext import commands
 import random
 
@@ -19,9 +18,17 @@ async def roll(ctx):
 
 @client.event
 async def on_voice_state_update(member, before, after):
-    channel = client.get_channel() #Fill with the channel ID you want the bot to send in.
-    if member == client.get_user(): #Fill with the User ID you want to use.
-        await channel.send(random.randrange(1,101)) #Modify for the dice roll
+    my_channel = client.get_channel() #Replace with the channel ID you want the bot to send in.
 
+    dice_roll = random.randrange(1,101)#Modify for the dice roll
 
-client.run('') #Your Client ID goes here
+    if member == client.get_user(): #Replace with the User ID you want to use.
+        await my_channel.send('No whammy, nooo whammmies')
+        await my_channel.send(f'`{dice_roll}`')
+
+    if after.channel == client.get_channel(): #Fill in the channel ID in get_channel with the channel you want to check on join. 
+        if member == client.get_user(): #Replace with the User ID you want to use.
+            await my_channel.send('No whammy, nooo whammmies')
+            await my_channel.send(f'`{dice_roll}`')
+
+client.run('') #Replace with your client ID found in Client Secret. 
