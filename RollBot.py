@@ -23,12 +23,9 @@ async def on_voice_state_update(member, before, after):
     dice_roll = random.randrange(1,101)#Modify for the dice roll
 
     if member == client.get_user(): #Replace with the User ID you want to use.
-        await my_channel.send('No whammy, nooo whammmies')
-        await my_channel.send(f'`{dice_roll}`')
-
-    if after.channel == client.get_channel(): #Fill in the channel ID in get_channel with the channel you want to check on join. 
-        if member == client.get_user(): #Replace with the User ID you want to use.
-            await my_channel.send('No whammy, nooo whammmies')
-            await my_channel.send(f'`{dice_roll}`')
+        if after.channel == client.get_channel(): #Fill in the channel ID in get_channel with the channel you want to check on join. 
+            if member == client.get_user(): #Replace with the User ID you want to use.
+                await my_channel.send('No whammy, nooo whammmies')
+                await my_channel.send(f'`{dice_roll}`')
 
 client.run('') #Replace with your client ID found in Client Secret. 
